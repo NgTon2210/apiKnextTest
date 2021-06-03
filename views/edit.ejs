@@ -17,22 +17,22 @@
 
                 <!--CONTAIN-MAIN-->
                 <div class="panel-body btn-margins">
-                    <form class="form-horizontal row-border col-md-8" action="#" >
+                    <form class="form-horizontal row-border col-md-8" method="POST" action="/edit/<%= users[0].id %>" >
                         <div class="form-group">
                             <label class=" control-label">Tên</label>
-                            <input type="text" name="regular" class="form-control">
+                            <input type="text" name="user_name" value="<%= users[0].user_name%>" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class=" control-label">Email</label>
-                            <input class="form-control" type="text" name="email">
+                            <input class="form-control" type="text" value="<%= users[0].user_mail%>" name="user_email">
                         </div>
                     
                         <div class="form-group">
                             <label class=" control-label">Address</label>
-                            <input class="form-control" type="text" name="address">
+                            <input class="form-control" type="text" value="<%= users[0].user_address%>" name="user_address">
                         </div>
                       
-                        <button type="button" class="btn btn-md btn-success">Cập nhật</button>
+                        <button type="submit" class="btn btn-md btn-success">Cập nhật</button>
                     </form>
                 </div>
             </div><!-- /.panel-->

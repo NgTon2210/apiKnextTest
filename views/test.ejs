@@ -1,0 +1,131 @@
+<style>
+    .navigation{
+        border: 1px solid white;
+    }
+    .navigation li{
+
+    }
+    .navigation a{
+        font-weight: bold;
+    }
+</style>
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                <em class="fa fa-home"></em>
+            </a></li>
+            <li class="active">Tài khoản</li>
+        </ol>
+    </div><!--/.row-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Quản lí tài khoản</h1>
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Bordered Table</div>
+                <div class="panel-body btn-margins">
+                    <div class="col-md-12">
+                        <a type="button"  href="/add" class="btn btn-md btn-primary">Thêm tài khoản</a>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0; i<users.length; i++){ %>
+                                <tr>
+                                    <td><%= users[i].id %></td>
+                                    <td><%= users[i].user_name %></td>
+                                    <td><%= users[i].user_mail %></td>
+                                    <td><%= users[i].user_address %></td>
+                                    <td class="form-group">
+                                        <a type="button" href="/edit/<%= users[i].id%>"class="btn btn-sm btn-info">Sửa</a>
+                                        <a type="button" onclick="confirm('ban co muon xoa: '+ users[i].user_name)" href="/<%= users[i].id%>"class="btn btn-sm btn-danger">Xoá</a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- /.panel-->
+            <div class="btn-group margin" style="margin-top: -30px; margin-right: 100px; display: flex; justify-content: flex-end;">
+           
+                <% if( totalPage > 0) {%>
+                        <ul class="pagination" style="margin-top: 2rem;">
+        
+                            <!-- FIRST ITEM -->  
+                            <% if(page == 1) { %> 
+                       
+                                <li class="page-item disabled">
+                                <a class="page-link" href="/user/page/1">First</a>
+                                </li>
+                            <% } else { %>
+                       
+                                <li class="page-item">
+                                <a class="page-link" href="/user/page/1">First</a>
+                                </li>
+                            <% } %>
+                            
+                            <!-- ITEMS  -->
+                            <% var i = (Number(page) > 3 ? Number(page) - 2 : 1) %> 
+                
+                            <% if(i !== 1) { %>
+                                <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                                </li>
+                            <% } %>
+                            <% for(; i <= (Number(page) + 2) && i <= totalPage; i++) { %>
+                          
+                            <% if(i == page) { %>
+                                <li class="page-item active">
+                                <a class="page-link" href="/user/page/<%= i %>">
+                                    <%= i %>
+                                </a>
+                                </li>
+                            <% } else { %>
+                                <li class="page-item">
+                                <a class="page-link" href="/user/page/<%= i %>">
+                                    <%= i %>
+                                </a>
+                                </li>
+                            <% } %>
+                            <% if (i == Number(page) + 2 && i < totalPage) { %>
+                                <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                                </li>
+                            <% } %>
+                            <% } %>
+                            
+                            <!-- LAST ITEM -->
+                            <% if(page == totalPage) { %> 
+                  
+                                <li class="page-item disabled">
+                                <a class="page-link" href="#">
+                                    Last
+                                </a>
+                                </li>
+                            <% } else { %>
+                        
+                                <li class="page-item">
+                                <a class="page-link" href="/user/page/<%= totalPage %>">
+                                    Last
+                                </a>
+                                </li>
+                            <% } %>
+                        </ul>
+                  <% } %>
+                  
+            </div>
+        </div>
+      
+    </div>
+</div>
+

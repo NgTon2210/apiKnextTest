@@ -6,19 +6,23 @@ var bodyParser = require('body-parser');
 var knex = require('./db/knexfile');
 var app = express();
 
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
+
 //static file
 
 app.use(express.static('public'))
 app.use('./css', express.static(__dirname + 'public/css'))
 app.use('./js', express.static(__dirname + 'public/js'))
 
-
+router.use('/edit', express.static(path.join(process.cwd(), 'public')));
+router.use('/user', express.static(path.join(process.cwd(), 'public')));
+router.use('/user/page', express.static(path.join(process.cwd(), 'public')));
 
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router)
-app.listen(9000, ()=> console.log('server listening on port 1000'))
+app.listen(8080, ()=> console.log('server listening on port 1000'))
