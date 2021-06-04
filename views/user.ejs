@@ -46,7 +46,7 @@
                                     <td><%= users[i].user_address %></td>
                                     <td class="form-group">
                                         <a type="button" href="/edit/<%= users[i].id%>"class="btn btn-sm btn-info">Sửa</a>
-                                        <a type="button" href="/<%= users[i].id%>"class="btn btn-sm btn-danger">Xoá</a>
+                                        <a type="button" href="/<%=users[i].id%>"class="btn btn-sm btn-danger">Xoá</a>
                                     </td>
                                 </tr>
                                 <% } %>

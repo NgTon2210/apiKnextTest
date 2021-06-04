@@ -1,10 +1,11 @@
-var express = require('express');
+const express = require('express');
 const router = require('./routes')
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts')
-var bodyParser = require('body-parser');
-var knex = require('./db/knexfile');
-var app = express();
+const bodyParser = require('body-parser');
+const knex = require('./db/knexfile');
+const bcrypt = require('bcryptjs');
+const app = express();
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -25,4 +26,4 @@ router.use('/user/page', express.static(path.join(process.cwd(), 'public')));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router)
-app.listen(8080, ()=> console.log('server listening on port 1000'))
+app.listen(9000, ()=> console.log('server listening on port 1000'))
